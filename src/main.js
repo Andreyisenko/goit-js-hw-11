@@ -46,7 +46,6 @@ function handleSubmit(event) {
     });
     // function fetcH() {
 
-    
     fetch(`https://pixabay.com/api/?${params}`)
       .then(response => {
         if (!response.ok) {
@@ -63,6 +62,7 @@ function handleSubmit(event) {
             message:
               'Sorry, there are no images matching your search query. Please try again!',
           });
+          gallerY.innerHTML = '';
           spn.classList.remove('is-hidden');
           return;
         }
@@ -72,7 +72,12 @@ function handleSubmit(event) {
         spn.classList.remove('is-hidden');
       })
       .catch(error => {
-        console.log(error);
+        iziToast.show({
+          color: 'red',
+          position: 'center',
+          message: `${error}`,
+        });
+        spn.classList.remove('is-hidden');
       })
       .finally(() => console.log('ok'));
   }

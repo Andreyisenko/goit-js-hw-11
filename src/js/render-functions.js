@@ -26,5 +26,4 @@ function createMarkup(arr) {
             </li>`
     )
     .join('');
-
 }
