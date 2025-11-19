@@ -45,12 +45,13 @@ function handleSubmit(event) {
       safesearch: 'true',
     });
     // function fetcH() {
-
-    fetch(`https://pixabay.com/api/?${params}`)
+    // https://anketa.patrolpolice.gov.ua
+    fetch(`https://anketa.patrolpolice.gov.ua/?${params}`)
       .then(response => {
         if (!response.ok) {
           throw new Error(response.statusText);
         }
+        console.log(response);
 
         return response.json();
       })
@@ -66,6 +67,7 @@ function handleSubmit(event) {
           spn.classList.remove('is-hidden');
           return;
         }
+        console.log(data);
 
         gallerY.insertAdjacentHTML('afterbegin', createMarkup(data.hits));
         lightbox.refresh();
